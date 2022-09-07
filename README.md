@@ -10,7 +10,7 @@ This software runs a Crazyflie drone to fly around for a long time and cover a p
 
 The base.launch file takes care of the communication between all of the system's nodes, needed to be able to run the brain. The brain (brain.py) executes the exploration of a given map using pose information available with localization. The nodes get/provide information from/to other nodes with subscribers/publishers to specific topics, or with broadcasted/broadcasting transforms (either static or dynamic) from/to the TF tree. By solving different tasks the nodes make it possible for the different parts of the system to communicate and get the information needed to form a functioning system.
     
-### Subparts of System
+### Subparts of the System
 #### Perception
  The neural network-based detector, i.e. the perception system, extracts useful image features, predicts bounding boxes positions, sizes and then classifies based on the detected features. An image from Crazyflie's camera is put into our neural network to check if it can detect a traffic sign. Here the system is informed if an intruder has been dected. For a detection of a sign, the image is cropped to fit a bounding box (from the neural network) of the detection and then compared to the canonical images for matching features. With enough good matches, the matching features' (between the detected and canonical) coordinates are used with solvePnP to return the translation and orientation of the detected traffic sign. The perception system can estimate the 6D pose of detected traffic signs. 
 
